@@ -1,0 +1,155 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../svg/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 61.6832em 790.3em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../svg/sprite.png");
+}
+
+
+
+  .icon.all-time:before {
+      background-position: 0em 0em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.calcultion:before {
+      background-position: 0em -61.2em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.cargo:before {
+      background-position: 0em -122.4em;
+      width: 61.2em;
+      height: 34.68em;
+  }
+
+
+
+
+  .icon.danger:before {
+      background-position: 0em -157.1em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.delivery:before {
+      background-position: 0em -218.3em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.guaranty:before {
+      background-position: 0em -279.5em;
+      width: 61.2em;
+      height: 38.71em;
+  }
+
+
+
+
+  .icon.home-office:before {
+      background-position: 0em -318.3em;
+      width: 61.2em;
+      height: 42.839999999999996em;
+  }
+
+
+
+
+  .icon.i-fax:before {
+      background-position: 0em -361.2em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.i-mail:before {
+      background-position: 0em -422.4em;
+      width: 7.95em;
+      height: 7.69em;
+  }
+
+
+
+
+  .icon.i-map:before {
+      background-position: 0em -430.1em;
+      width: 61.2em;
+      height: 61.77em;
+  }
+
+
+
+
+  .icon.i-phone:before {
+      background-position: 0em -491.9em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.i-skype:before {
+      background-position: 0em -553.1em;
+      width: 61.6832em;
+      height: 61.6832em;
+  }
+
+
+
+
+  .icon.inter-carriage:before {
+      background-position: 0em -614.8em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+  .icon.outsize-cargo:before {
+      background-position: 0em -676em;
+      width: 61.2em;
+      height: 53.04em;
+  }
+
+
+
+
+  .icon.responsibility:before {
+      background-position: 0em -729.1em;
+      width: 61.2em;
+      height: 61.2em;
+  }
+
+
+
+
+

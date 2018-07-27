@@ -1,0 +1,65 @@
+@import 'variables';
+@import 'mixin';
+
+.section-navigation {
+	width: 100%;
+	position: fixed;
+	left: -100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999999;
+	transition: left .5s ease-in;
+
+	&_active {
+		left: 0;
+	}
+
+	@include medium-screen() {
+		width: 50%;
+	}
+
+	&__wrapper {
+		padding-top: 20px;
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-flow: column;
+		background-color: $color-addBlue;
+	}
+
+	&__burger-button {
+		margin-left: auto;
+		padding-right: 20px;
+		width: 65px;
+		height: 30px;
+	}
+
+	&__menu {
+		margin-top: 70px;
+		padding-left: 40px;
+		font: 24px $font-main;
+		color: $color-addWhite;
+	}
+}
+
+.menu {
+	
+	&__list {
+		
+		
+	}
+
+	&__group {
+		margin-bottom: 30px;
+		transition: color .2s;
+		&:hover {
+			color: $color-addRed;
+		}
+	}
+
+	&__link {
+
+	}
+}

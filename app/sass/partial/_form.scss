@@ -1,0 +1,85 @@
+.form {
+
+	&__group {
+		margin: 0 auto;
+		max-width: 310px;
+
+		@include large-screen() {
+			max-width: 350px;
+		}
+
+		&_slider {
+			max-width: 285px;
+
+			@include large-screen() {
+				max-width: 350px;
+			}
+
+			@include extra-large-screen(){
+				/* margin: 0; */
+			}
+		}
+	}
+
+	&__row {
+
+	}
+
+	&__field {
+
+	}
+
+	&__input {
+		margin-bottom: 25px;
+		padding-left: 15px;
+		height: 50px;
+		border: 2px solid $color-main;
+		font: 16px $font-main;
+		color: $color-main;
+		width: 100%;
+		outline: none;
+		
+		&_slider {
+			margin-bottom: 20px;
+		}
+
+		@include large-screen() {
+			height: 60px;
+			font-size: 18px;
+			margin-bottom: 25px;
+		}
+
+		&:focus {
+			border: 2px solid $color-addBlue;
+			box-shadow: 15px 17px 53px 0px rgba(44,52,117,0.28);
+		}
+
+		&:focus::placeholder {
+			opacity: 0;
+		}
+
+	}
+
+	&__submit {
+		height: 50px;
+		width: 100%;
+		border: 2px solid $color-addRed;
+		background-color: $color-addWhite;
+		font: 22px $font-main;
+		color: $color-addRed;
+		outline: none;
+		cursor: pointer;
+		transition: all .4s;
+
+		@include large-screen() {
+			height: 60px;
+			font-size: 24px;
+		}
+
+		&:hover {
+			border: 2px solid $color-addWhite;
+			background-color: $color-addRed;
+			color: $color-addWhite;
+		}
+	}
+}

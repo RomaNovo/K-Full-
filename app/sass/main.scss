@@ -1,0 +1,1221 @@
+@import 'variables';
+@import 'mixin';
+@import 'partial/brg';
+@import 'partial/form';
+@import 'partial/menu';
+@import 'partial/slider';
+
+@font-face {
+	font-family: "RobotoRegular";
+	src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+	src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
+	url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "RobotoMedium";
+	src: url("../fonts/RobotoMedium/RobotoMedium.eot");
+	src: url("../fonts/RobotoMedium/RobotoMedium.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/RobotoMedium/RobotoMedium.woff") format("woff"),
+	url("../fonts/RobotoMedium/RobotoMedium.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* ================ General setting =================== */
+
+%reset {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	@extend %reset;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 20px;
+	max-width: 1200px;
+}
+
+.list {
+	@extend %reset;
+	list-style-type: none;
+}
+
+.link {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* =========================== General setting End ================= */
+
+/* =========================== Components ========================== */
+.logo {
+	width: 107px;
+	height: 51px;
+
+	@include extra-large-screen() {
+		width: 135px;
+		height: 64px;
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		display: block; 
+	}
+}
+
+.phone {
+
+	&__icon {
+		width: 31px;
+		height: 31px;
+
+		@include medium-screen() {
+			display: none;
+		}
+	}
+
+	&__link {
+		font: 16px $font-main;	
+		color: $color-main;
+		text-decoration: none;
+
+		&:hover {
+			color: $color-addRed;
+		}
+
+		@include extra-large-screen() {
+			font-size: 18px;
+			font-weight: bold;
+		}
+	}
+
+ 	&__img {	
+		fill: #fa6132;
+	}
+
+	&__numb {
+		display: none;
+
+		@include medium-screen() {
+			display: block;
+		}
+	}
+}
+
+.nav-menu {
+	@extend %reset;
+	display: flex;
+	list-style-type: none;
+	margin-left: 50px;
+	
+	&__elm {
+		margin-right: 25px;
+		position: relative;
+	
+		&:hover:after {
+				left: 0;
+				right: 0; 
+				opacity: 1;
+			}
+
+		&:after {
+			content: '';
+			display: block;
+			opacity: 0;
+			position: absolute;
+			bottom: -2px;
+			left: 35%; 
+			right: 35%; 	
+			height: 2px;
+			background: $color-addRed;
+			transition: all .4s;
+		}
+	}
+
+	&__link {
+		text-decoration: none;
+		font: 16px $font-main;
+		color: $color-main;
+		transition: color .2s;
+
+		&:hover {
+			color: $color-addRed;
+		}
+
+		@include extra-large-screen() {
+			font-size: 18px;
+		}
+	}
+}
+
+.title {
+	@extend %reset;
+	font: 24px $font-main;
+	color: $color-main;
+
+	@include medium-screen() {
+		font: 30px $font-main;
+	}
+
+	&_inf {
+		font: 20px $font-main;
+		text-align: center;
+		color: #fff;
+
+		@include medium-screen() {
+			font: 22px $font-main;
+		}
+
+		@include large-screen() {
+			font: 24px $font-main;
+		}
+	}
+}
+
+.button {
+	text-align: center;
+	cursor: pointer;
+}
+
+.blocks {
+	
+	&__box {
+		display: flex;
+		flex-flow: wrap;
+		/* justify-content: center; */
+
+		@include large-screen(){
+			justify-content: space-between;
+		}
+	}
+
+	&__elm {
+
+		&:hover .elm__description {
+			color: $color-addRed;
+		}
+
+		&_shipment {
+			margin-bottom: 30px;
+			flex: 1 1 50%;
+
+			@include medium-screen() {
+				flex: 1 1 33%;
+			}
+
+			@include large-screen(){
+				flex: 0 1 auto;
+			}
+		}
+
+		&_advantage {
+			margin-bottom: 30px;
+			flex: 1 1 50%;
+
+			@include medium-screen() {
+				flex: 1 1 33%;
+			}
+
+			@include large-screen(){
+				flex: 0 1 auto;
+			}
+		}
+	}
+}
+
+.svg {
+	width: 100%;
+	height: 100%;
+	fill: #605f5f;
+	cursor: pointer;
+	transition: fill .3s;
+	-webkit-filter: drop-shadow( 1px 1px 1px  #605f5f ); 
+	            filter: drop-shadow( -1px -1px 40px   #605f5f);
+}
+
+%description {
+	margin: 0 auto;
+	padding-top: 15px;
+	max-width: 175px;
+	font: 16px $font-main;
+	color: $color-main;
+	text-align: center;
+	transition: all .4s;
+
+	@include medium-screen() {
+		padding-top: 20px;
+		max-width: 190px;
+		font: 18px $font-main;
+	}
+
+	@include large-screen() {
+		padding-top: 35px;
+		max-width: 192px;
+	}
+
+	@include extra-large-screen() {
+		padding-top: 50px;
+		max-width: 195px;
+	}
+}
+
+.elm {
+	cursor: pointer;
+	&__item {
+
+	}
+
+	&:hover  .svg {
+		 fill: $color-addRed; 	
+	}
+
+	&__icon {		
+		margin: 0 auto;
+
+		&_shipment {
+			
+			&-f {			
+				width: 124px;
+				height: 80px;
+				
+				@include medium-screen() {
+					width: 162px;
+					height: 90px;
+				}		
+			}
+
+			&-t {
+				width: 95px;
+				height: 80px;
+				
+				@include medium-screen() {
+					width: 125px;
+					height: 90px;
+				}
+			}
+		
+			&-th {
+				width: 85px;
+				height: 80px;
+				
+				@include medium-screen() {
+					width: 95px;
+					height: 90px;
+				}
+				
+			}
+
+			&-fo {
+				width: 110px;
+				height: 80px;
+			
+				@include medium-screen() {
+					width: 120px;
+					height: 90px;
+				}				
+			}
+
+			&-fi {
+				width: 85px;
+				height: 80px;
+				
+				@include medium-screen() {
+					width: 90px;
+					height: 90px;
+				}				
+			}
+		}
+
+		&_advantage {
+
+			&-f {
+				width: 85px;
+				height: 80px;
+			}
+
+			&-s {
+				width: 120px;
+				height: 80px;
+			}
+
+			&-th {
+				width: 85px;
+				height: 80px;
+			}
+
+
+			&-fo {
+				width: 70px;
+				height: 80px;
+			}
+
+
+			&-fi {
+				width: 85px;
+				height: 80px;
+			}
+		}
+	}
+
+	&__description {
+
+		&_shipment {
+			@extend %description;
+		}
+
+		&_advantage {
+			@extend %description;
+		}
+	}
+}
+
+.element {
+	margin: 0 auto;
+	max-width: 340px; 
+	height: 205px;  
+	position: relative;
+	border: 1px solid $color-addBlue;
+	transition: all .4s;
+	cursor: pointer;
+
+	@include large-screen() {
+		max-width: none;
+		height: auto;
+	}
+
+	&:hover .element__hidden-info  {
+		opacity: 1;
+		visibility: visible;
+	} 
+
+	&:hover {
+		border: 1px solid $color-addWhite;
+		box-shadow: 15px 17px 53px 0px rgba(44,52,117,0.28);
+	}
+
+	&__img {
+		width: 98%;
+		height: 100%;
+	}
+	
+	&__hidden-info {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba(249, 61, 3, .75);
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		opacity: 0;
+		visibility: hidden;
+		transition: all .4s;
+	}
+
+	&__hidden-block {
+		display: flex;
+		padding-left: 15px;
+		align-items: center;
+		border: 1px solid rgba(255,255,255,.9);
+		position: absolute;
+		color: rgba(255,255,255,.9);
+		top: 15px;
+		left: 15px;
+		right: 15px;
+		bottom: 15px;
+		z-index: 2;
+		font: 14px $font-main;	
+
+		@include large-screen() {
+			font-size: 20px;
+		}
+
+		@include extra-large-screen() {
+			font-size: 24px;
+		}
+	}
+}
+
+
+.hidden-block {
+	/* width: 100%;
+	height: 100%; */
+
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+	}
+}
+
+/* =========================== Companents End =========================== */
+
+/* ============================= Header ================================= */
+
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: $color-addWhite;
+	z-index: 501;
+	box-shadow: 0px 6px 17px -2px  rgba(0, 0, 0, .75);
+	transition: top 1s;
+
+	&_active {
+		top: 0;
+	}
+	
+	&__wrapper {
+		height: 60px;
+		/* padding: 5px 0 3px; */
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+
+		@include extra-large-screen() {
+			height: 80px;
+		}
+	}
+
+	&__logo {
+			
+	}
+
+	&__burger-button {
+		width: 45px;
+		@include large-screen() {
+			display: none;
+		}
+	}
+
+	&__nav-menu {
+		display: none;
+
+		@include large-screen() {
+			display: block;
+		}
+	}
+
+	&__phone {
+		
+	}
+}
+
+/* ====================== Components for slider =================== */
+
+
+.section-slider__slider {
+	width: 100%;
+	height: 100%;
+	overflow: hidden; 
+
+	/* @include extra-large-screen() {
+		margin-top: 80px;
+	} */
+}
+
+.form-block {
+	@include extra-large-screen() {
+		max-width: 600px;
+	}
+
+	&__name {
+		@extend %reset;
+		margin-top: 35px;
+		font: 50px $font-main;
+		text-align: center;
+		color: $color-addWhite;
+		text-shadow:   -5px 3px 3px $color-main;
+
+		@include medium-screen() {
+			margin-top: 100px;
+		}
+
+		@include large-screen() {
+			margin-top: 85px;
+			font-size: 60px;
+			text-shadow:   -6px 3px 3px $color-main;
+		}
+
+		@include extra-large-screen() {
+			margin-top: 185px;
+			text-shadow:   -7px 3px 3px $color-main;
+		}
+	}
+
+	&__text {
+		@extend %reset;
+		padding: 0 20px;
+		font: 20px $font-add;
+		color: $color-addWhite;
+		text-align: center;
+
+		&_top {
+
+			@include medium-screen() {
+				margin-top: 25px;
+			}
+
+			@include large-screen() {
+				margin: 15px auto 0;
+				max-width: 500px;
+				font-size: 30px;		
+			}
+
+			@include extra-large-screen() {
+				margin-top: 10px;
+			}
+
+		}
+		
+		&_bottom {
+			margin-top: 15px;
+			font-size: 18px;
+
+			@include large-screen() {
+				font-size: 24px;
+				margin-bottom: 50px; 
+			}
+
+			@include extra-large-screen() {
+				margin-top: 30px;
+				margin-bottom: 20px; 
+			}
+		}
+	}
+
+	&__form {
+		margin-top: 25px;
+	}
+}
+
+/* ====================== Components for slider END================ */
+
+/* ====================== Section-slider =========================== */
+
+.section-slider {
+
+	box-shadow: 0px 6px 17px -2px  rgba(44, 52, 117, .75);
+	
+	&__wrapper {
+		height: 430px;
+		position: relative;	
+		margin-top: 60px;
+
+		@include medium-screen() {
+			height: 570px;
+			margin-top: 0;
+		}
+
+		@include large-screen() {
+			height: 670px;
+		}
+
+		@include extra-large-screen() {
+			height: 100vh;
+		}
+	}
+
+	&__form-block {
+		position: absolute;
+		widht: 100%;
+		height: 100%;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(44, 52, 117,.70);
+		z-index: 500;
+
+		@include medium-screen() {
+		 	position: absolute;
+			left: auto;
+			bottom: 0;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+		}
+
+		@include extra-large-screen()  {
+			padding-top: 75px;
+		}	
+	}
+}
+
+/* ===================== Section-slider END ===================== */
+
+/* ===================== Section-shipmenttype ========================= */
+
+.section-shipmenttype {
+	
+	&__wrapper {
+		padding-top: 25px;
+		
+		@include medium-screen() {
+			padding-top: 40px;
+			padding-bottom: 15px;
+		}
+	
+		@include large-screen() {
+			padding-bottom: 35px;
+			padding-top: 55px;
+		}
+
+		@include extra-large-screen() {
+			padding-top: 55px;	
+			padding-bottom: 55px;
+		}
+	
+	} 
+
+	&__title {	
+		padding-bottom: 45px;
+		text-align: center;
+
+		@include extra-large-screen() {
+			padding-bottom: 80px;
+		}
+	}
+
+	&__blocks {
+		
+	}
+}
+
+/* ===================== Section-shipmenttype END====================== */
+
+
+/* ===================== Section-inf ============================= */
+.section-inf {
+	background-color: $color-addBlue;
+
+	&__wrapper {
+		padding-top: 20px;
+		padding-bottom: 30px;
+
+		@include medium-screen() {
+			padding-top: 30px;
+			padding-bottom: 45px;
+		}
+
+		@include large-screen() {
+			padding: 20px 0;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+		@include extra-large-screen() {
+			justify-content: space-between;
+		}
+	}
+
+	&__title {
+		
+		@include large-screen() {
+			width: 400px;
+		}
+
+		@include extra-large-screen() {
+			width: auto;
+		}
+	}
+
+	&__button {
+		margin: 20px auto 0;
+		padding: 10px 0;
+		max-width: 305px;
+		border: 2px solid $color-addRed;
+		font: 21.2px $font-main;
+		background-color: #eaeaec;
+		color: $color-addRed;
+		transition: background-color .4s, color .4s, border .4s;
+
+		&:hover {
+			background-color: $color-addRed;
+			color: $color-addWhite;
+			border: 2px solid $color-addWhite;
+		}
+
+		@include medium-screen() {
+			margin: 35px auto 0;
+		}
+
+		@include large-screen() {
+			margin: 0;
+			padding: 15px 0;
+			max-width: 350px;
+			font: 24px $font-main;
+			flex: 0 1 350px;
+		}
+	}	
+}
+
+/* ===================== Section-inf End ========================= */
+
+
+/* ===================== Section-transport ======================= */
+
+.section-transport {
+
+	&__wrapper {
+		padding-top: 25px;
+		padding-bottom: 40px;
+
+		@include medium-screen() {
+			padding-top: 50px;
+		}
+	}
+
+	&__title {
+		text-align: center;
+		padding-bottom: 15px;
+
+		/* &:hover  ~ .section-transport__element_even {
+			transform: translateX(100px);
+		} */
+	}
+
+	&__box {
+		display: flex;
+		flex-flow: column;
+		overflow: hidden;
+
+		@include medium-screen() {
+			padding-top: 20px;
+			justify-content: space-around;
+			flex-flow: row wrap;
+		}
+
+		@include extra-large-screen() {
+			justify-content: space-between;
+		}
+	}
+
+	&__element {
+		transition: transform 1s ease-out;
+		/* flex: 0 1 340px; */
+	 	&_even {
+			transform: translateX(1000px);
+		} 
+
+		&_odd {
+			transform: translateX(-1000px);
+		} 
+		
+
+		@include large-screen() {
+			flex: 0 1 465px;
+		}
+
+		@include extra-large-screen() {
+			flex: 0 1 555px;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 35px;
+		}
+	}
+}
+
+/* ===================== Section-transport End =================== */
+
+/* ===================== Section-advantage ======================= */
+
+.section-advantage {
+	border-top: 1px solid $color-main;
+	box-shadow: 0px -4px 25px -2px rgba(44,52,117,0.28), inset 0px 5px 25px -2px rgba(44,52,117,0.28);
+
+	&__wrapper {
+		padding-top: 20px;
+
+		@include large-screen() {
+			padding-bottom: 40px;
+			padding-top: 50px;
+		}
+	}
+
+	&__title {
+		text-align: center;
+	}
+
+	&__blocks {
+		padding-top: 40px;
+	}
+}
+
+/* ===================== Section-advantage End =================== */
+
+/* ===================== Section-form ============================ */
+
+.section-form {
+	background-image: url(../img/nb.png);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+	box-shadow: 1px 0px 62px -1px rgba(44, 52, 117,0.75);
+	
+	&__bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(44, 52, 117, .75);
+
+		@include medium-screen() {
+			display: none;
+		}
+	}
+	
+	&__wrapper {
+		padding-top: 30px;
+		padding-bottom: 60px;
+		position: relative;
+		z-index: 1;
+
+		@include medium-screen() {
+			padding-top: 45px;
+			padding-bottom: 70px;
+			max-width: 365px;
+		}
+
+		@include large-screen() {
+			padding-top: 70px;
+			padding-bottom: 100px;
+			max-width: 470px;
+		}
+
+		@include extra-large-screen() {
+			padding-top: 90px;
+			padding-bottom: 115px;
+			max-width: 605px;
+		}
+	}
+
+	&__title {
+		@extend %reset;
+		margin: 0 auto;
+		max-width: 305px;
+		font: 20px $font-add;
+		color: $color-addWhite;
+		text-align: center;
+
+		@include medium-screen() {
+			max-width: none;
+			font: 24px $font-add;
+			color: $color-addBlue;
+		}
+
+		@include large-screen() {
+			font-size: 30px;
+		}
+
+		@include extra-large-screen() {
+			max-width: 480px;
+		}
+	
+
+		&:nth-child(2) {
+			margin-top: 10px;
+			font: 18px $font-add;
+
+			@include medium-screen() {
+				font: 20px $font-add;
+			}
+
+			@include large-screen() {
+				margin-top: 25px;
+				font-size: 24px;
+			}
+
+			@include extra-large-screen() {
+				margin-top: 30px;
+				max-width: 330px;
+			}
+		}
+	}
+
+	&__form {
+		margin-top: 30px;
+
+		@include medium-screen() {
+			margin-top: 45px;
+		}
+	}
+}
+
+/* ===================== Section-form END======================== */
+
+/* ===================== Section-above ========================== */
+
+.section-above {
+
+	&__wrapper {
+		padding-top: 25px;
+		padding-bottom: 35px;
+
+		@include medium-screen() {
+			padding-top: 40px;
+			padding-bottom: 50px;
+		}
+
+		@include large-screen() {
+			padding-top: 50px;
+			padding-bottom: 65px;
+		}
+
+		@include extra-large-screen() {
+			padding-top: 50px;
+		}
+	}
+
+	&__title {
+		text-align: center;
+	}
+
+	&__text {
+		margin-top: 10px;
+		font: 16px $font-main;
+		color: $color-main;
+		text-align: center;
+
+		@include medium-screen() {
+			margin-top: 20px;
+			font-size: 18px;
+		}
+	}
+}
+/* ===================== Section-above END======================= */
+
+/* =============== Component for Section-contact ================ */
+
+.google-maps {
+	width: 100%;
+	height: 365px;
+
+	@include medium-screen() {
+		height: 430px;
+	}
+
+	@include large-screen() {
+		height: 505px;
+	}
+
+	@include extra-large-screen() {
+		height: 595px;
+	}
+}
+
+.contacts {
+	@extend %reset;
+	margin-top: 30px;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between; 
+	font: 14px $font-add;
+	list-style-type: none;
+	color: white;
+	pointer-events: auto;
+	z-index: 10;
+
+	@include medium-screen() {
+		display: block;
+		margin-left: 70px;
+		max-width: 220px;
+	}
+
+	@include large-screen() {
+		margin-top: 60px;
+		margin-left: 90px;
+		max-width: 300px;
+	}
+
+	@include extra-large-screen() {
+		margin-top: 95px;
+		margin-left: 90px;
+		max-width: 320px;
+	}
+
+	&__item {
+		margin-bottom: 20px;
+		display: flex;	
+		flex: 0 1 50%;	
+		cursor: pointer;
+		transition: all .2s;
+
+		&:hover {
+			color: $color-addRed;
+		}
+
+		&:hover .contacts__info_map:before {
+			background-image: url('../icons/i-map-red.png');
+		}
+
+		&:hover .contacts__info_fax:before {
+			background-image: url('../icons/i-fax-red.png');
+		}
+
+		&:hover .contacts__info_phone:before {
+			background-image: url('../icons/i-phone-red.png');
+		}
+
+		&:hover .contacts__info_skype:before {
+			background-image: url('../icons/i-skype-red.png');
+		}
+
+		&:hover .contacts__info_email:before {
+			background-image: url('../icons/i-mail-red.png');
+		}
+
+		&:nth-child(even) {
+			justify-content: flex-end;
+		}
+
+		@include medium-screen() {
+			margin-bottom: 30px;
+			display: block;
+			font-size: 18px;
+		}
+
+		@include large-screen() {
+			font-size: 24px;
+		}
+
+	}
+
+	&__info {	
+		padding-left: 20px;
+		position: relative;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			top: -2px;
+			left: -20px;
+			background-size: cover;
+
+			@include medium-screen() {
+				width: 30px;
+				height: 30px;
+				left: -30px;
+			}
+		}
+
+		&_map::before {
+			background-image: url('../icons/map.png');
+		}
+
+		&_fax::before {
+			background-image: url('../icons/i-fax.png');
+		}
+
+		&_phone::before {
+			background-image: url('../icons/i-phone.png');
+		}
+
+		&_skype::before {
+			background-image: url('../icons/i-skype.png');
+		}
+
+		&_email::before {
+			background-image: url('../icons/i-mail.png');
+		}
+	}
+}
+
+/* ============================  END ============================= */
+
+/* ===================== Section-contact ========================= */
+
+.section-contact {
+
+	&__wrapper {
+			
+	}
+
+	&__google-maps {
+		width: 100%;
+		position: relative;
+	}
+
+	&__contact {
+		padding: 0 20px 0 40px;
+		width: 100%; 
+		position: absolute;
+		height: 50%;
+		bottom: 0;
+		background-color: rgba(44, 52, 117, .75);
+		pointer-events: none;
+
+		@include medium-screen() {
+			padding: 0;
+			width: 50%;
+			height: 100%;
+			right: 0;
+			top: 0;	
+			bottom: 0;
+		}
+	}
+}
+
+/* =============================== END ============================ */
+
+/* =========================== Footer ============================== */
+
+.footer {
+	height: 30px;
+	line-height: 30;
+
+	@include medium-screen() {
+		height: 70px;		
+	}
+
+	@include large-screen() {
+		height: 90px;		
+	}
+
+	@include extra-large-screen() {
+		height: 60px;
+	}
+
+	&__text {
+		font: 14px $font-main;
+		color: $color-main;
+		text-align: center;	
+		line-height: 30px;
+
+		@include medium-screen() {
+			font-size: 18px;
+			line-height: 70px;
+		}
+
+		@include large-screen() {
+			line-height: 90px;
+		}
+
+		@include extra-large-screen() {
+			line-height: 60px;
+		}
+	}
+}
+
+/* =========================== Footer End ========================== */

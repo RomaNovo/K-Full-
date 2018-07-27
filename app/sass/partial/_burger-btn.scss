@@ -1,0 +1,58 @@
+
+
+.burger-btn {
+
+	&__line {
+		width: 50px;
+		height: 5px;
+		background-color: black;
+		display: block;
+		margin: 8px auto;
+		transition: all 0.3s ease-in-out; 			
+	}
+
+	&:hover{
+  		cursor: pointer;
+	}
+}
+
+@keyframes rot {
+from {transform: rotate(45deg)}
+50% {transform: rotate(45deg)}
+to {transform: rotate(320deg)}
+}
+.burger-btn.is-active{
+  transition: all .5s ease-in-out;
+  transition-delay: 0.6s;
+  transform: rotate(45deg);
+  animation: .5s rot 1s ease-in-out;
+
+	.burger-btn__line:nth-child(2){
+  		width: 0px;
+	}
+
+	.burger-btn__line:nth-child(1){
+	  transition-delay: 0.3s;
+	}
+
+	.burger-btn__line:nth-child(3){
+	  transition-delay: 0.3s;
+	}
+
+	.burger-btn__line:nth-child(1){
+	  transform: translateY(13px);
+	}
+
+	.burger-btn__line:nth-child(3){
+	  transform: translateY(-13px) rotate(90deg);
+	}
+}
+
+
+
+
+
+
+
+
+
